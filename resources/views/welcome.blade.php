@@ -1,4 +1,5 @@
 <x-layout>
+    <div class="h-full">
         <!-- Arama Çubuğu -->
         <div class="flex justify-center my-6">
             <input type="text" placeholder="Kitap Ara..." class="w-1/2 p-3 rounded-lg text-black">
@@ -17,7 +18,13 @@
             </div>
         </div>
             <!-- Metin Alanı -->
-    <div class="text-center my-6">
-        <h2 class="text-2xl font-semibold">Yeni kitaplar keşfedin ve başka kitap kurtları ile sohbet edin!</h2>
+            <div class="text-center my-6">
+                <h2 class="text-2xl font-semibold">Yeni kitaplar keşfedin ve başka kitap kurtları ile sohbet edin!</h2>
+                <a href="{{route('books')}}" class="inline-block mt-6 px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition duration-300">
+                    📚 Tüm Kitaplar İçin
+                </a>
+            </div>
+            
     </div>
+
 </x-layout>

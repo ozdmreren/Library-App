@@ -1,9 +1,9 @@
 <x-layout>
     <div class="flex justify-center items-center min-h-screen">
         <div class="bg-[#4A3A3A] p-8 rounded-lg shadow-lg w-full max-w-md">
-            <h2 class="text-2xl font-semibold text-center mb-4">Kayıt Ol</h2>
+            <h2 class="text-2xl font-semibold text-center mb-4">Giriş Yap</h2>
 
-            <form action="{{ route('register') }}" method="POST" class="space-y-4">
+            <form action="{{ route('login') }}" method="POST" class="space-y-4">
                 @csrf
 
                 <div>
@@ -11,13 +11,6 @@
                     <input type="text" id="firstname" name="firstname" required
                         class="w-full p-3 rounded-lg bg-gray-100 text-black focus:ring-2 focus:ring-blue-500" value="{{old('firstname')}}">
                         <x-error-input name="firstname"/>
-                </div>
-
-                <div>
-                    <label for="lastname" class="block text-sm font-medium">Soyad</label>
-                    <input type="text" id="lastname" name="lastname" required
-                        class="w-full p-3 rounded-lg bg-gray-100 text-black focus:ring-2 focus:ring-blue-500" value="{{old('lastname')}}">
-                        <x-error-input name="lastname"/>
                 </div>
 
                 <div>
@@ -34,20 +27,14 @@
                         <x-error-input name="password"/>
                 </div>
 
-                <div>
-                    <label for="password_confirmation" class="block text-sm font-medium">Şifre Tekrar</label>
-                    <input type="password" id="password_confirmation" name="password_confirmation" required
-                        class="w-full p-3 rounded-lg bg-gray-100 text-black focus:ring-2 focus:ring-blue-500">
-                        <x-error-input name="password_confirmation"/>
-                </div>
 
                 <button type="submit" class="w-full p-3 bg-blue-600 rounded-lg hover:bg-blue-700 transition">
-                    Kayıt Ol
+                    Giriş Yap
                 </button>
             </form>
 
             <p class="text-sm text-center mt-4">
-                Zaten bir hesabın var mı? <a href="{{ route('login') }}" class="text-blue-400">Giriş Yap</a>
+                Hesabın yok mu? <a href="{{ route('register') }}" class="text-blue-400">Kayıt Ol</a>
             </p>
         </div>
     </div>
