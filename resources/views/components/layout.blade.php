@@ -24,7 +24,7 @@
     <!-- Navbar -->
     <header class="flex justify-between items-center p-6 bg-[#2A1F1F]">
         <div class="text-xl font-bold">
-            <a href="{{route('home')}}">📚 Philéō Bitig</a>
+            <a href="{{route('home')}}" class="hover:opacity-90">📚 Philéō Bitig</a>
         </div>
         <div>
             @guest
@@ -33,10 +33,28 @@
             @endguest
 
             @auth
-            <form action="{{route('logout')}}" method="POST">
-                @csrf
-                <button  class=" bg-yellow-800 p-2 rounded-lg transform ease-in-out hover:scale-105">Logout</button>
-            </form>
+                <div class="relative">
+                    <!-- Avatar -->
+                    <p id="avatar-btn" class="bg-yellow-800 p-2 rounded-full w-12 h-12 flex items-center justify-center transform ease-in-out hover:scale-105">
+                        <img src="https://i.pravatar.cc/100" alt="Avatar" class="w-10 h-10 rounded-full">
+                    </p>
+                
+                    <!-- Modal Arkaplan -->
+                    <div id="modal-overlay" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                        <!-- Modal İçeriği -->
+                        <div class="bg-[#2A1F1F] text-white p-6 rounded-lg w-80 shadow-lg">
+                            <h3 class="text-lg font-semibold mb-4">👤 Kullanıcı Menüsü</h3>
+                            <ul class="space-y-3">
+                                <li><a href="{{route('dashboard',["user"=>me()->id])}}" class="block p-2 hover:bg-gray-700 rounded">📄 Profile</a></li>
+                                <li><a href="{{route('library')}}" class="block p-2 hover:bg-gray-700 rounded">📚 Library</a></li>
+                                <li><a href="#" class="block p-2 hover:bg-gray-700 rounded">💾 Saves</a></li>
+                                <li><a href="#" class="block p-2 hover:bg-gray-700 rounded">🧑‍🤝‍🧑 Friends</a></li>
+                                <li><a href="#" class="block p-2 hover:bg-gray-700 rounded">⚙️ Settings</a></li>
+                            </ul>
+                            <button id="close-modal" class="mt-4 w-full bg-red-600 p-2 rounded hover:bg-red-700">Kapat</button>
+                        </div>
+                    </div>
+                </div> 
             @endauth
         </div>
     </header>
@@ -81,7 +99,7 @@
                         <a href="https://twitter.com" target="_blank" class="text-gray-400 hover:text-white transition">
                             <i class="fab fa-twitter text-2xl"></i>
                         </a>
-                        <a href="https://github.com" target="_blank" class="text-gray-400 hover:text-white transition">
+                        <a href="https://github.com/ozdmreren" target="_blank" class="text-gray-400 hover:text-white transition">
                             <i class="fab fa-github text-2xl"></i>
                         </a>
                     </div>
@@ -114,6 +132,19 @@
         // Sohbet Kutusu Aç/Kapat
         document.getElementById("chat-toggle").addEventListener("click", function () {
             document.getElementById("chat-box").classList.toggle("hidden");
+        });
+    </script>
+    
+
+    
+    <!-- AVATAR JS -->
+    <script>
+        document.getElementById("avatar-btn").addEventListener("click", function () {
+            document.getElementById("modal-overlay").classList.remove("hidden");
+        });
+
+        document.getElementById("close-modal").addEventListener("click", function () {
+            document.getElementById("modal-overlay").classList.add("hidden");
         });
     </script>
 </body>
